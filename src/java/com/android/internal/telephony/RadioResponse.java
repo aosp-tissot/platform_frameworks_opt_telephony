@@ -1706,8 +1706,31 @@ public void setWifiEnabledResponse(RadioResponseInfo p0) {
 
         if (rr != null) {
             int num = calls.size();
+            android.util.Log.d("PHH", "Got response calls " + num);
             ArrayList<DriverCall> dcCalls = new ArrayList<DriverCall>(num);
             DriverCall dc;
+
+            if(num == 0 && RadioIndication.incomingCallNotification != null) {
+                dcCalls = new ArrayList<DriverCall>(1);
+                dc = new DriverCall();
+                dcCalls.add(dc);
+                //Use DriverCall.fromCLCCLine and log as reference
+		dc.index = 0;
+		dc.isMT = true;
+                //dc.isMT ??? could be callId, seqNo, type&1 ? dc.isMT = RadioIndication.incomingCallNotification.callId;
+                dc.state = DriverCall.State.INCOMING;
+                dc.isVoice = Integer.parseInt(RadioIndication.incomingCallNotification.callMode) == 0;
+                dc.numberPresentation = PhoneConstants.PRESENTATION_ALLOWED;
+                dc.number = RadioIndication.incomingCallNotification.number;
+                dc.TOA = Integer.parseInt(RadioIndication.incomingCallNotification.type);
+                dc.isMpty = false;
+                dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
+                sendMessageResponse(rr.mResult, dcCalls);
+                mRil.processResponseDone(rr, responseInfo, dcCalls);
+
+		return;
+            }
+            RadioIndication.incomingCallNotification = null;
 
             for (int i = 0; i < num; i++) {
                 dc = new DriverCall();
@@ -1728,6 +1751,10 @@ public void setWifiEnabledResponse(RadioResponseInfo p0) {
                 dc.name = calls.get(i).name;
                 dc.namePresentation =
                         DriverCall.presentationFromCLIP((int) (calls.get(i).namePresentation));
+
+               android.util.Log.d("PHH", "Added call " + dc);
+
+
                 if (calls.get(i).uusInfo.size() == 1) {
                     dc.uusInfo = new UUSInfo();
                     dc.uusInfo.setType(calls.get(i).uusInfo.get(0).uusType);

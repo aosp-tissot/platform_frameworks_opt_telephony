@@ -117,6 +117,7 @@ import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.nano.TelephonyProto.SmsSession;
 import com.android.internal.telephony.uicc.IccRefreshResponse;
 import com.android.internal.telephony.uicc.IccUtils;
+import com.android.internal.telephony.RILRequest;
 
 import java.util.ArrayList;
 
@@ -126,11 +127,19 @@ public class RadioIndication extends IRadioIndication.Stub {
     RadioIndication(RIL ril) {
         mRil = ril;
     }
-	@Override
-	public void incomingCallIndication(int p0, IncomingCallNotification p1) {
-        android.util.Log.d("PHH", "MTK incoming call " + p0 + ":" + p1);
-        callStateChanged(p0);
-	}
+
+    public static IncomingCallNotification incomingCallNotification = null;
+           @Override
+     public void incomingCallIndication(int p0, IncomingCallNotification p1) {
+           try {
+mRil.mRadioProxy.setCallIndication(0x4242, 0, Integer.parseInt(p1.callId), Integer.parseInt(p1.seqNo));
+           } catch(Exception e) {
+                   android.util.Log.d("PHH", "Failed setting call indication", e);
+                   }
+            incomingCallNotification = p1;
+       callStateChanged(p0);
+       android.util.Log.d("PHH", "MTK incoming call " + p0 + ":" + p1);
+     }
 
         @Override
         public void confSRVCC(int p0, ArrayList<Integer> p1) {

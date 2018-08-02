@@ -1,0 +1,44 @@
+diff --git a/src/java/com/android/internal/telephony/RadioIndication.java b/src/java/com/android/internal/telephony/RadioIndication.java
+index a7d2418bb..47bbd7417 100644
+--- a/src/java/com/android/internal/telephony/RadioIndication.java
++++ b/src/java/com/android/internal/telephony/RadioIndication.java
+@@ -108,6 +108,11 @@ public class RadioIndication extends IRadioIndication.Stub {
+         mRil = ril;
+     }
+ 
++    public static IncomingCallNotification incomingCallNotification = null
++     public void incomingCallIndication(int p0, IncomingCallNotification p1) {
++            incomingCallNotification = p1;
++     }
++
+     /**
+      * Indicates when radio state changes.
+      * @param indicationType RadioIndicationType
+diff --git a/src/java/com/android/internal/telephony/RadioResponse.java b/src/java/com/android/internal/telephony/RadioResponse.java
+index caf447740..1f12d4ad3 100644
+--- a/src/java/com/android/internal/telephony/RadioResponse.java
++++ b/src/java/com/android/internal/telephony/RadioResponse.java
+@@ -1306,7 +1713,25 @@ public class RadioResponse extends IRadioResponse.Stub {
+             int num = calls.size();
+             ArrayList<DriverCall> dcCalls = new ArrayList<DriverCall>(num);
+             DriverCall dc;
++            if(num == 0 && RadioIndication.incomingCallNotification != null) {
++                dcCalls = new ArrayList<DriverCall>(1);
++                DriverCall dc = new DriverCall();
++                dcCalls[0] = dc;
++                //Use DriverCall.fromCLCCLine and log as reference
++                dc.index = Integer.parseInt(RadioIndication.incomingCallNotification.callId);
++                //dc.isMT ??? could be callId, seqNo, type&1 ? dc.isMT = RadioIndication.incomingCallNotification.callId;
++                dc.state = DriverCall.State.INCOMING;
++                ds.isVoice = Integer.parseInt(RadioIndication.incomingCallNotification.callMode) == 0;
++                ds.numberPresentation = PhoneConstants.PRESENTATION_ALLOWED;
++                dc.number = RadioIndication.incomingCallNotification.number;
++                dc.TOA = dc.type;
++                dc.isMpty = false;
++                dc.number = PhoneNumberUtils.stringFromStringAndTOA(dc.number, dc.TOA);
++                sendMessageResponse(rr.mResult, dcCalls);
++                mRil.processResponseDone(rr, responseInfo, dcCalls);
++            }
++            RadioIndication.incomingCallNotification = null;
+             for (int i = 0; i < num; i++) {
+                 dc = new DriverCall();

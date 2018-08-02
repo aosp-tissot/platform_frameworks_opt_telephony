@@ -57,8 +57,8 @@ public class GsmCdmaCallTracker extends CallTracker {
     private static final String LOG_TAG = "GsmCdmaCallTracker";
     private static final boolean REPEAT_POLLING = false;
 
-    private static final boolean DBG_POLL = false;
-    private static final boolean VDBG = false;
+    private static final boolean DBG_POLL = true;
+    private static final boolean VDBG = true;
 
     //***** Constants
 
