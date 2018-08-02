@@ -136,8 +136,6 @@ mRil.mRadioProxy.setCallIndication(0x4242, 0, Integer.parseInt(p1.callId), Integ
            } catch(Exception e) {
                    android.util.Log.d("PHH", "Failed setting call indication", e);
                    }
-            incomingCallNotification = p1;
-       callStateChanged(p0);
        android.util.Log.d("PHH", "MTK incoming call " + p0 + ":" + p1);
      }
 
