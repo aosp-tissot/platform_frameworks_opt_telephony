@@ -36,7 +36,8 @@ import android.hardware.radio.V1_0.Dial;
 import android.hardware.radio.V1_0.GsmBroadcastSmsConfigInfo;
 import android.hardware.radio.V1_0.GsmSmsMessage;
 import android.hardware.radio.V1_0.HardwareConfigModem;
-import android.hardware.radio.V1_0.IRadio;
+//import android.hardware.radio.V1_0.IRadio;
+import vendor.mediatek.hardware.radio.V2_0.IRadio;
 import android.hardware.radio.V1_0.IccIo;
 import android.hardware.radio.V1_0.ImsSmsMessage;
 import android.hardware.radio.V1_0.LceDataInfo;
@@ -518,7 +519,9 @@ public final class RIL extends BaseCommands implements CommandsInterface {
             if (mRadioProxy != null) {
                 mRadioProxy.linkToDeath(mRadioProxyDeathRecipient,
                         mRadioProxyCookie.incrementAndGet());
+                mRadioProxy.setResponseFunctionsMtk(mRadioResponse, mRadioIndication);
                 mRadioProxy.setResponseFunctions(mRadioResponse, mRadioIndication);
+
             } else {
                 riljLoge("getRadioProxy: mRadioProxy == null");
             }

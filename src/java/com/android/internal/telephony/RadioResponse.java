@@ -33,7 +33,17 @@ import android.hardware.radio.V1_0.RadioResponseInfo;
 import android.hardware.radio.V1_0.SendSmsResult;
 import android.hardware.radio.V1_0.SetupDataCallResult;
 import android.hardware.radio.V1_0.VoiceRegStateResult;
-import android.hardware.radio.V1_1.IRadioResponse;
+//import android.hardware.radio.V1_1.IRadioResponse;
+import vendor.mediatek.hardware.radio.V2_0.IRadioResponse;
+import vendor.mediatek.hardware.radio.V2_0.PhbEntryExt;
+import vendor.mediatek.hardware.radio.V2_0.PhbEntryStructure;
+import vendor.mediatek.hardware.radio.V2_0.VsimEvent;
+import vendor.mediatek.hardware.radio.V2_0.PhbMemStorageResponse;
+import vendor.mediatek.hardware.radio.V2_0.CallForwardInfoEx;
+import vendor.mediatek.hardware.radio.V2_0.MtkSetupDataCallResult;
+import vendor.mediatek.hardware.radio.V2_0.OperatorInfoWithAct;
+import vendor.mediatek.hardware.radio.V2_0.SmsParams;
+import vendor.mediatek.hardware.radio.V2_0.SmsMemStatus;
 import android.hardware.radio.V1_1.KeepaliveStatus;
 import android.os.AsyncResult;
 import android.os.Message;
@@ -60,6 +70,398 @@ import java.util.Collections;
 import java.util.List;
 
 public class RadioResponse extends IRadioResponse.Stub {
+@Override
+public void setNetworkSelectionModeManualWithActResponse(RadioResponseInfo p0) {
+}
+@Override
+public void setSimPowerResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void deleteUPBEntryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setColrResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getPhoneBookStringsLengthResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void writePhbEntryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setRoamingEnableResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void writePhoneBookEntryExtResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void eccPreferredRatResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void replaceVtCallResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void readUPBEmailEntryResponse(RadioResponseInfo p0, String p1) {
+}
+
+@Override
+public void getFemtocellListResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void triggerModeSwitchByEccResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getGsmBroadcastLangsResponse(RadioResponseInfo p0, String p1) {
+}
+
+@Override
+public void selectFemtocellResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getPOLCapabilityResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void readPhoneBookEntryExtResponse(RadioResponseInfo p0, ArrayList<PhbEntryExt> p1) {
+}
+
+@Override
+public void resetRadioResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setEccServiceCategoryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void removeCbMsgResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setWifiIpAddressResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setEtwsResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setLteAccessStratumReportResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setE911StateResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setApcModeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setModemPowerResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setRxTestConfigResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void writeUPBGrpEntryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void readUPBAnrEntryResponse(RadioResponseInfo p0, ArrayList<PhbEntryStructure> p1) {
+}
+
+@Override
+public void readPhbEntryResponse(RadioResponseInfo p0, ArrayList<PhbEntryStructure> p1) {
+}
+
+@Override
+public void voiceAcceptResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setServiceStateToModemResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void vsimNotificationResponse(RadioResponseInfo p0, VsimEvent p1) {
+}
+
+@Override
+public void setGsmBroadcastLangsResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void syncDataSettingsToMdResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void sendCnapResponse(RadioResponseInfo p0, int p1, int p2) {
+}
+
+@Override
+public void queryPhbStorageInfoResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void setResumeRegistrationResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setFemtoCellSystemSelectionModeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void sendRequestRawResponse(RadioResponseInfo p0, ArrayList<Byte> p1) {
+}
+
+@Override
+public void sendEmbmsAtCommandResponse(RadioResponseInfo p0, String p1) {
+}
+
+@Override
+public void setPhoneBookMemStorageResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void readUPBGasListResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void readUPBAasListResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void getSmsParametersResponse(RadioResponseInfo p0, SmsParams p1) {
+}
+
+@Override
+public void currentStatusResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setClipResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getPhoneBookMemStorageResponse(RadioResponseInfo p0, PhbMemStorageResponse p1) {
+}
+
+@Override
+public void readUPBGrpEntryResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void getRxTestResultResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void getApcInfoResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void setCallIndicationResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void queryCallForwardInTimeSlotStatusResponse(RadioResponseInfo p0, ArrayList<CallForwardInfoEx> p1) {
+}
+
+@Override
+public void getColrResponse(RadioResponseInfo p0, int p2) {
+}
+
+@Override
+public void setWifiSignalLevelResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void cancelAvailableNetworksResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setLocationInfoResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setEmergencyAddressIdResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setNetworkLockResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void editUPBEntryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getSmsMemStatusResponse(RadioResponseInfo p0, SmsMemStatus p1) {
+}
+
+@Override
+public void getDataCallListResponseEx(RadioResponseInfo p0, ArrayList<MtkSetupDataCallResult> p1) {
+}
+
+@Override
+public void resetMdDataRetryCountResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setLteUplinkDataTransferResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setEccListResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void vsimOperationResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void hangupAllResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setSmsParametersResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getCurrentPOLListResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void runGbaAuthenticationResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void readUPBSneEntryResponse(RadioResponseInfo p0, String p1) {
+}
+
+@Override
+public void getGsmBroadcastActivationRsp(RadioResponseInfo p0, int p1) {
+}
+
+@Override
+public void queryNetworkLockResponse(RadioResponseInfo p0, int p1, int p2, int p3, int p4, int p5, int p6, int p7) {
+}
+
+@Override
+public void getRoamingEnableResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void setFdModeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void emergencyDialResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getSmsRuimMemoryStatusResponse(RadioResponseInfo p0, SmsMemStatus p1) {
+}
+
+@Override
+public void getAvailableNetworksWithActResponse(RadioResponseInfo p0, ArrayList<OperatorInfoWithAct> p1) {
+}
+
+@Override
+public void setCallForwardInTimeSlotResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void vtDialResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void sendRequestStringsResponse(RadioResponseInfo p0, ArrayList<String> p1) {
+}
+
+@Override
+public void getATRResponse(RadioResponseInfo p0, String p1) {
+}
+
+@Override
+public void handleStkCallSetupRequestFromSimWithResCodeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setWifiAssociatedResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void reloadModemTypeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setNattKeepAliveStatusResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setPOLEntryResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setTrmResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void queryFemtoCellSystemSelectionModeResponse(RadioResponseInfo p0, int p1) {
+}
+
+@Override
+public void setColpResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setRemoveRestrictEutranModeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void getColpResponse(RadioResponseInfo p0, int p1, int p2) {
+}
+
+@Override
+public void queryUPBCapabilityResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void queryUPBAvailableResponse(RadioResponseInfo p0, ArrayList<Integer> p1) {
+}
+
+@Override
+public void storeModemTypeResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setupDataCallResponseEx(RadioResponseInfo p0, MtkSetupDataCallResult p1) {
+}
+
+@Override
+public void abortFemtocellListResponse(RadioResponseInfo p0) {
+}
+
+@Override
+public void setWifiEnabledResponse(RadioResponseInfo p0) {
+}
+
+
     // The number of the required config values for broadcast SMS stored in the C struct
     // RIL_CDMA_BroadcastServiceInfo
     private static final int CDMA_BSI_NO_OF_INTS_STRUCT = 3;

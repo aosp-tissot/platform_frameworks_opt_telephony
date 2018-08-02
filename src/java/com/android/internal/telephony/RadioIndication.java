@@ -80,8 +80,27 @@ import android.hardware.radio.V1_0.SimRefreshResult;
 import android.hardware.radio.V1_0.SsInfoData;
 import android.hardware.radio.V1_0.StkCcUnsolSsResult;
 import android.hardware.radio.V1_0.SuppSvcNotification;
-import android.hardware.radio.V1_1.IRadioIndication;
 import android.hardware.radio.V1_1.KeepaliveStatus;
+import vendor.mediatek.hardware.radio.V2_0.IRadioIndication;
+import vendor.mediatek.hardware.radio.V2_0.MtkSetupDataCallResult;
+import vendor.mediatek.hardware.radio.V2_0.CipherNotification;
+import vendor.mediatek.hardware.radio.V2_0.VsimOperationEvent;
+import vendor.mediatek.hardware.radio.V2_0.DedicateDataCall;
+import vendor.mediatek.hardware.radio.V2_0.PcoDataAttachedInfo;
+import vendor.mediatek.hardware.radio.V2_0.DedicateDataCall;
+import vendor.mediatek.hardware.radio.V2_0.EtwsNotification;
+import vendor.mediatek.hardware.radio.V2_0.CfuStatusNotification;
+import vendor.mediatek.hardware.radio.V2_0.CrssNotification;
+import vendor.mediatek.hardware.radio.V2_0.PhbEntryExt;
+import vendor.mediatek.hardware.radio.V2_0.PhbEntryStructure;
+import vendor.mediatek.hardware.radio.V2_0.VsimEvent;
+import vendor.mediatek.hardware.radio.V2_0.PhbMemStorageResponse;
+import vendor.mediatek.hardware.radio.V2_0.CallForwardInfoEx;
+import vendor.mediatek.hardware.radio.V2_0.MtkSetupDataCallResult;
+import vendor.mediatek.hardware.radio.V2_0.OperatorInfoWithAct;
+import vendor.mediatek.hardware.radio.V2_0.SmsParams;
+import vendor.mediatek.hardware.radio.V2_0.SmsMemStatus;
+import vendor.mediatek.hardware.radio.V2_0.IncomingCallNotification;
 import android.os.AsyncResult;
 import android.os.SystemProperties;
 import android.telephony.CellInfo;
@@ -107,6 +126,201 @@ public class RadioIndication extends IRadioIndication.Stub {
     RadioIndication(RIL ril) {
         mRil = ril;
     }
+	@Override
+	public void incomingCallIndication(int p0, IncomingCallNotification p1) {
+        android.util.Log.d("PHH", "MTK incoming call " + p0 + ":" + p1);
+        callStateChanged(p0);
+	}
+
+        @Override
+        public void confSRVCC(int p0, ArrayList<Integer> p1) {
+        }
+	@Override
+	public void dataCallListChangedEx(int p0, ArrayList<MtkSetupDataCallResult> p1) {
+	}
+	@Override
+	public void responseFemtocellInfo(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void onPcoStatus(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void responseNetworkEventInd(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void volteLteConnectionStatus(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void smsReadyInd(int p0) {
+	}
+	@Override
+	public void onVirtualSimOff(int p0, int p1) {
+	}
+	@Override
+	public void onWifiMonitoringThreshouldChanged(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void onWifiRoveout(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void oemHookRaw(int p0, ArrayList<Byte> p1) {
+	}
+	@Override
+	public void onImsiRefreshDone(int p0) {
+	}
+	@Override
+	public void cdmaCallAccepted(int p0) {
+	}
+	@Override
+	public void dataAllowedNotification(int p0, int p1) {
+	}
+	@Override
+	public void cipherIndication(int p0, CipherNotification p1) {
+	}
+	@Override
+	public void onVirtualSimOn(int p0, int p1) {
+	}
+	@Override
+	public void onPdnHandover(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void responsePsNetworkStateChangeInd(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void vtStatusInfoIndication(int p0, int p1) {
+	}
+	@Override
+	public void onSimMeLockEvent(int p0) {
+	}
+	@Override
+	public void resetAttachApnInd(int p0) {
+	}
+	@Override
+	public void onSimPlugOut(int p0) {
+	}
+	@Override
+	public void plmnChangedIndication(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void triggerOtaSP(int p0) {
+	}
+	@Override
+	public void dedicatedBearerDeactivationInd(int p0, int p1) {
+	}
+	@Override
+	public void onSimTrayPlugIn(int p0) {
+	}
+	@Override
+	public void onSimCommonSlotNoChanged(int p0) {
+	}
+	@Override
+	public void registrationSuspendedIndication(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void mdChangedApnInd(int p0, int p1) {
+	}
+	@Override
+	public void responseCsNetworkStateChangeInd(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void meSmsStorageFullInd(int p0) {
+	}
+	@Override
+	public void onMdDataRetryCountReset(int p0) {
+	}
+	@Override
+	public void onWfcPdnStateChanged(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void onRemoveRestrictEutran(int p0) {
+	}
+	@Override
+	public void onVsimEventIndication(int p0, VsimOperationEvent p1) {
+	}
+	@Override
+	public void onImeiLock(int p0) {
+	}
+	@Override
+	public void onNattKeepAliveChanged(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void dedicatedBearerModificationInd(int p0, DedicateDataCall p1) {
+	}
+	@Override
+	public void networkInfoInd(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void onLocationRequest(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void speechCodecInfoIndication(int p0, int p1) {
+	}
+	@Override
+	public void pcoDataAfterAttached(int p0, PcoDataAttachedInfo p1) {
+	}
+	@Override
+	public void responseModulationInfoInd(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void eMBMSAtInfoIndication(int p0, String p1) {
+	}
+	@Override
+	public void onSimRecovery(int p0, int p1) {
+	}
+	@Override
+	public void gmssRatChangedIndication(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void phbReadyNotification(int p0, int p1) {
+	}
+	@Override
+	public void onStkMenuReset(int p0) {
+	}
+	@Override
+	public void responseInvalidSimInd(int p0, ArrayList<String> p1) {
+	}
+	@Override
+	public void onWfcPdnError(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void onSimMissing(int p0, int p1) {
+	}
+	@Override
+	public void bipProactiveCommand(int p0, String p1) {
+	}
+	@Override
+	public void esnMeidChangeInd(int p0, String p1) {
+	}
+	@Override
+	public void onSimPlugIn(int p0) {
+	}
+	@Override
+	public void dedicatedBearerActivationInd(int p0, DedicateDataCall p1) {
+	}
+	@Override
+	public void worldModeChangedIndication(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void onPseudoCellInfoInd(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void onWifiPdnActivate(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void newEtwsInd(int p0, EtwsNotification p1) {
+	}
+	@Override
+	public void onLteAccessStratumStateChanged(int p0, ArrayList<Integer> p1) {
+	}
+	@Override
+	public void cfuStatusNotify(int p0, CfuStatusNotification p1) {
+	}
+	@Override
+	public void eMBMSSessionStatusIndication(int p0, int p1) {
+	}
+	@Override
+	public void crssIndication(int p0, CrssNotification p1) {
+	}
 
     /**
      * Indicates when radio state changes.
